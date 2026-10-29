@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graph — Graphiste indépendant</title>
+<meta name="description" content="Miniatures, PDP, bannières et overlays. Créations, tarifs et infos pour commander.">
+<meta property="og:title" content="Graph — Graphiste indépendant">
+<meta property="og:description" content="Miniatures, PDP, bannières et overlays.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0D;--bg2:#111114;--card:#17171B;--line:#29292F;--mute:#92929B;--text:#F5F5F7;--white:#FFF;--r:10px;--w:1120px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:110px;scroll-padding-top:calc(110px + env(safe-area-inset-top,0px));background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+section{padding:112px 0;border-top:1px solid var(--line)}
+.idx{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.idx::after{content:"";height:1px;width:56px;background:var(--line)}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.03em;font-weight:700;margin:0 0 12px;color:var(--white)}
+.lead{color:var(--mute);margin:0 0 48px;max-width:52ch;font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 22px;border-radius:8px;font:600 14px/1 inherit;font-family:inherit;border:1px solid var(--line);background:transparent;color:var(--white);cursor:pointer;transition:background .2s,border-color .2s,filter .2s,color .2s}
+.btn:hover{border-color:var(--mute);background:#ffffff0d}
+.btn.p{background:var(--white);color:#000;border-color:var(--white)}
+.btn.p:hover{filter:brightness(.86);background:var(--white)}
+.btn.sm{height:36px;padding:0 16px;font-size:13px}
+#topo{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.7}
+main{position:relative;z-index:1}
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:#0B0B0Dee;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.04em;color:var(--white)}
+.logo i{font-style:normal;color:var(--mute)}
+.links{display:flex;align-items:center;gap:28px}
+.links a:not(.btn){font-size:14px;color:var(--mute);transition:color .2s}
+.links a:not(.btn):hover,.links a.on{color:var(--white)}
+.burger{display:none;width:44px;height:44px;background:none;border:1px solid var(--line);border-radius:8px;color:var(--white);cursor:pointer}
+@media(max-width:760px){
+.burger{display:inline-flex;align-items:center;justify-content:center}
+.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 20px}
+.links.open{display:flex}
+.links a:not(.btn){padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+.links .btn{margin-top:16px}
+section{padding:80px 0}}
+/* hero */
+.hero{border-top:0;min-height:100svh;display:flex;align-items:center;padding:140px 0 90px;position:relative}
+.hero .kick{font-size:12px;letter-spacing:.2em;color:var(--mute);margin-bottom:28px;display:flex;gap:14px;align-items:center}
+.hero .kick::before{content:"";width:40px;height:1px;background:var(--mute)}
+.hero h1{font-size:clamp(46px,10vw,128px);line-height:.95;letter-spacing:-.05em;font-weight:800;margin:0 0 32px;color:var(--white);max-width:12ch}
+.hero p{color:var(--mute);max-width:46ch;margin:0 0 36px;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.coord{position:absolute;left:24px;right:24px;bottom:28px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.14em;color:#5d5d66;text-transform:uppercase;max-width:var(--w);margin:0 auto;border-top:1px solid var(--line);padding-top:14px}
+/* works */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.chip{height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--mute);font:500 13px inherit;font-family:inherit;cursor:pointer;transition:all .2s}
+.chip:hover{color:var(--white);border-color:var(--mute)}
+.chip[aria-pressed=true]{background:var(--white);color:#000;border-color:var(--white)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.work{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;padding:0;text-align:left;color:inherit;font:inherit;transition:border-color .25s;display:block;width:100%}
+.work:hover,.work:focus-visible{border-color:#5a5a63}
+.work .img{aspect-ratio:16/10;overflow:hidden;background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative}
+.work img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.work:hover img{transform:scale(1.04)}
+.work .ph{color:#5d5d66;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:1px dashed var(--line);padding:10px 14px;border-radius:6px}
+.work.empty{cursor:default}
+.meta{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-size:14px}
+.meta span:last-child{color:var(--mute);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+/* prices */
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:960px){.prices{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.prices{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:28px;transition:border-color .25s}
+.card:hover{border-color:#5a5a63}
+.card h3{margin:0;font-size:15px;font-weight:500;color:var(--mute)}
+.price{font-size:44px;font-weight:700;letter-spacing:-.04em;color:var(--white);line-height:1;margin-top:10px;font-variant-numeric:tabular-nums}
+.card .btn{margin-top:auto;width:100%}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:800px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.step b{font-size:13px;color:var(--mute);letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.step h3{margin:36px 0 8px;font-size:22px;letter-spacing:-.02em;color:var(--white)}
+.step p{margin:0;color:var(--mute);font-size:15px}
+/* reviews */
+.rhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.rhead .lead{margin:0}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:960px){.reviews{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.reviews{grid-template-columns:1fr}}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:12px}
+.stars{color:var(--white);letter-spacing:2px;font-size:15px}
+.stars s{text-decoration:none;color:#3a3a42}
+.rev p{margin:0;font-size:15px;overflow-wrap:anywhere}
+.rev footer{display:flex;justify-content:space-between;gap:8px;margin-top:auto;font-size:12px;color:var(--mute);border:0;padding:0;background:none}
+.rev footer b{color:var(--text);font-weight:600}
+.del{background:none;border:0;color:var(--mute);cursor:pointer;font:inherit;font-size:12px;text-decoration:underline;padding:0}
+.empty-msg{color:var(--mute);border:1px dashed var(--line);border-radius:var(--r);padding:40px;text-align:center;font-size:15px;grid-column:1/-1}
+/* contact */
+.contact{background:var(--bg2)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:48px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.box h2{margin-bottom:8px}.box p{margin:0;color:var(--mute);max-width:44ch}
+/* footer */
+footer.site{border-top:1px solid var(--line);background:var(--bg);padding:40px 0 48px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--mute)}
+footer.site nav{display:flex;gap:22px;flex-wrap:wrap}
+footer.site a:hover{color:var(--white)}
+/* modal */
+dialog{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0;max-width:min(92vw,560px);width:100%}
+dialog::backdrop{background:#000c}
+dialog.big{max-width:min(94vw,1100px);background:transparent;border:0}
+dialog.big img{max-height:82vh;width:auto;margin:0 auto;border-radius:10px;border:1px solid var(--line)}
+dialog.big .cap{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:var(--mute);font-size:14px}
+form{padding:28px;display:grid;gap:18px}
+form h3{margin:0;font-size:22px;letter-spacing:-.02em;color:var(--white)}
+label{font-size:13px;color:var(--mute);display:block;margin-bottom:6px}
+input[type=text],textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:8px;color:var(--white);font:inherit;padding:12px 14px;transition:border-color .2s}
+input[type=text]:focus,textarea:focus{outline:0;border-color:var(--mute)}
+textarea{min-height:120px;resize:vertical}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.stars-in{display:flex;gap:4px;border:0;padding:0;margin:0}
+.stars-in button{background:none;border:0;font-size:28px;color:#3a3a42;cursor:pointer;padding:2px 4px;line-height:1;transition:color .15s}
+.stars-in button.on{color:var(--white)}
+.err{color:#d8d8de;font-size:13px;min-height:18px;margin:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.count{font-size:12px;color:var(--mute)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg id="topo" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+<header>
+<div class="wrap nav">
+<a href="#accueil" class="logo" aria-label="Graph, accueil">Graph<i>.</i></a>
+<button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="links">☰</button>
+<div class="links" id="links">
+<a href="#accueil">Accueil</a><a href="#creations">Créations</a><a href="#tarifs">Tarifs</a><a href="#avis">Avis</a><a href="#contact">Contact</a>
+<a class="btn p sm" data-discord target="_blank" rel="noopener">Discord</a>
+</div>
+</div>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+<div class="wrap">
+<div class="kick">GRAPHISTE INDÉPENDANT</div>
+<h1>Mes créations graphiques.</h1>
+<p>Miniatures, PDP, bannières et overlays. Retrouve mes créations, mes tarifs et les infos pour commander.</p>
+<div class="cta"><a class="btn p" href="#creations">Voir mes créations</a><a class="btn" href="#contact">Me contacter</a></div>
+</div>
+<div class="coord" aria-hidden="true"><span>Graph</span><span>01 — 06</span><span>Portfolio</span></div>
+</section>
+
+<section id="creations"><div class="wrap rv">
+<div class="idx">02 · Créations</div>
+<h2>Mes créations</h2>
+<p class="lead">Quelques exemples de mes réalisations.</p>
+<div class="filters" id="filters" role="group" aria-label="Filtrer par catégorie"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="tarifs"><div class="wrap rv">
+<div class="idx">03 · Tarifs</div>
+<h2>Tarifs</h2>
+<p class="lead">Les tarifs de mes prestations. Pour commander, contacte-moi sur Discord.</p>
+<div class="prices" id="prices"></div>
+</div></section>
+
+<section id="commande"><div class="wrap rv">
+<div class="idx">04 · Commande</div>
+<h2>Comment commander ?</h2>
+<p class="lead"></p>
+<div class="steps">
+<div class="step"><b>01</b><h3>Contact</h3><p>Rejoins mon Discord et explique-moi ta demande via un ticket.</p></div>
+<div class="step"><b>02</b><h3>Discussion</h3><p>On précise ensemble les détails de la création.</p></div>
+<div class="step"><b>03</b><h3>Création</h3><p>On se met d’accord sur la commande avant de commencer.</p></div>
+</div>
+</div></section>
+
+<section id="avis"><div class="wrap rv">
+<div class="idx">05 · Avis</div>
+<div class="rhead">
+<div><h2>Avis clients</h2><p class="lead" id="rnote">Les avis laissés par mes clients.</p></div>
+<button class="btn p" id="openReview">Laisser un avis</button>
+</div>
+<div class="reviews" id="reviews" aria-live="polite"><div class="empty-msg">Chargement des avis…</div></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap rv">
+<div class="idx">06 · Contact</div>
+<div class="box">
+<div><h2>Me contacter</h2><p>Pour une commande ou une question, retrouve-moi sur le serveur Discord Graph.</p></div>
+<a class="btn p" data-discord target="_blank" rel="noopener">Rejoindre mon Discord</a>
+</div>
+</div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+<strong style="color:#fff;font-weight:800;letter-spacing:-.03em">Graph</strong>
+<nav aria-label="Pied de page"><a href="#creations">Créations</a><a href="#tarifs">Tarifs</a><a href="#avis">Avis</a><a href="#contact">Contact</a><a data-discord target="_blank" rel="noopener">Discord</a></nav>
+<span>© <span id="yr"></span> Graph</span>
+</div></footer>
+
+<dialog id="preview" class="big" aria-label="Prévisualisation">
+<img id="pimg" alt=""><div class="cap"><span id="pcap"></span><button class="btn sm" id="pclose">Fermer</button></div>
+</dialog>
+
+<dialog id="rdlg" aria-labelledby="rt">
+<form id="rform" novalidate>
+<h3 id="rt">Laisser un avis</h3>
+<div><label for="rn">Pseudo</label><input type="text" id="rn" maxlength="24" autocomplete="nickname"></div>
+<div><label id="sl">Note</label>
+<div class="stars-in" id="sin" role="radiogroup" aria-labelledby="sl"></div></div>
+<div><label for="rc">Commentaire</label><textarea id="rc" maxlength="400"></textarea><div class="count"><span id="cc">0</span>/400</div></div>
+<div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" id="rh" tabindex="-1" autocomplete="off"></label></div>
+<p class="err" id="err" role="alert"></p>
+<div class="row"><button type="button" class="btn" id="rcancel">Annuler</button><button type="submit" class="btn p">Publier</button></div>
+</form>
+</dialog>
+
+<script>
+/* ================= CONFIGURATION ================= */
+const CONFIG = {
+  discord: "https://discord.gg/77KxamJG2K",
+  // Remplace "src" par le lien de ton image. Sans "src", un emplacement vide s’affiche.
+  works: [
+    {title:"Miniature 1", cat:"Miniatures", src:""},
+    {title:"PDP 1",       cat:"PDP",        src:""},
+    {title:"Bannière 1",  cat:"Bannières",  src:""},
+    {title:"Overlay 1",   cat:"Overlays",   src:""},
+    {title:"Miniature 2", cat:"Miniatures", src:""},
+    {title:"PDP 2",       cat:"PDP",        src:""}
+  ],
+  prices: [
+    {name:"Miniature", price:"2 €"},
+    {name:"PDP",       price:"1,50 €"},
+    {name:"Bannière",  price:"3 €"},
+    {name:"Overlay",   price:"1,50 €"}
+  ]
+};
+/* ================================================== */
+const $=s=>document.querySelector(s);
+document.querySelectorAll("[data-discord]").forEach(a=>a.href=CONFIG.discord);
+$("#yr").textContent=new Date().getFullYear();
+
+/* fond topographique : courbes de niveau générées, statiques */
+(function(){
+  const NS="http://www.w3.org/2000/svg",svg=$("#topo");
+  // [centre x, centre y, nombre de courbes, écart, phase] : deux reliefs, très espacés
+  [[1260,300,6,92,0.6],[130,820,6,92,2.4]].forEach(([cx,cy,n,step,ph])=>{
+    for(let k=1;k<=n;k++){
+      const base=k*step,p=ph+k*0.18,segs=2+(k%2),span=Math.PI*2/segs*.55,off=k*1.1+ph;
+      for(let s=0;s<segs;s++){
+        const a0=off+s*Math.PI*2/segs;let d="";
+        for(let i=0;i<=36;i++){
+          const a=a0+span*i/36;
+          const r=base*(1+.1*Math.sin(2*a+p)+.05*Math.sin(3*a-p));
+          d+=(i?"L":"M")+(cx+r*Math.cos(a)*1.2).toFixed(1)+" "+(cy+r*Math.sin(a)).toFixed(1);
+        }
+        const path=document.createElementNS(NS,"path");
+        path.setAttribute("d",d);path.setAttribute("fill","none");
+        path.setAttribute("stroke",k%3===0?"#3a3a42":"#2a2a31");
+        path.setAttribute("stroke-width","1");
+        svg.append(path);
+      }
+    }
+  });
+})();
+
+/* nav */
+const burger=$("#burger"),links=$("#links");
+burger.onclick=()=>{const o=links.classList.toggle("open");burger.setAttribute("aria-expanded",o);burger.textContent=o?"✕":"☰"};
+links.addEventListener("click",e=>{if(e.target.closest("a")){links.classList.remove("open");burger.setAttribute("aria-expanded",false);burger.textContent="☰"}});
+const secs=["accueil","creations","tarifs","avis","contact"];
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.querySelectorAll("a:not(.btn)").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(id=>io2.observe(document.getElementById(id)));
+
+/* apparition */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+/* créations */
+const cats=["Tout",...new Set(CONFIG.works.map(w=>w.cat))];
+let cur="Tout";
+function drawWorks(){
+  const g=$("#grid");g.innerHTML="";
+  CONFIG.works.filter(w=>cur==="Tout"||w.cat===cur).forEach(w=>{
+    const b=document.createElement("button");b.className="work"+(w.src?"":" empty");b.type="button";
+    const im=document.createElement("div");im.className="img";
+    if(w.src){const i=document.createElement("img");i.src=w.src;i.alt=w.title+" — "+w.cat;i.loading="lazy";im.append(i);b.onclick=()=>openPrev(w)}
+    else{const p=document.createElement("span");p.className="ph";p.textContent="Emplacement libre";im.append(p);b.disabled=true}
+    const m=document.createElement("div");m.className="meta";
+    m.innerHTML="<span></span><span></span>";m.children[0].textContent=w.title;m.children[1].textContent=w.cat;
+    b.append(im,m);g.append(b);
+  });
+}
+function drawFilters(){
+  const f=$("#filters");f.innerHTML="";
+  cats.forEach(c=>{const b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c===cur);b.onclick=()=>{cur=c;drawFilters();drawWorks()};f.append(b)});
+}
+const pv=$("#preview");
+function openPrev(w){$("#pimg").src=w.src;$("#pimg").alt=w.title;$("#pcap").textContent=w.title+" · "+w.cat;pv.showModal()}
+$("#pclose").onclick=()=>pv.close();
+pv.addEventListener("click",e=>{if(e.target===pv)pv.close()});
+drawFilters();drawWorks();
+
+/* tarifs */
+$("#prices").innerHTML="";
+CONFIG.prices.forEach(p=>{
+  const c=document.createElement("div");c.className="card";
+  c.innerHTML='<div><h3></h3><div class="price"></div></div><a class="btn p" target="_blank" rel="noopener">Commander</a>';
+  c.querySelector("h3").textContent=p.name;c.querySelector(".price").textContent=p.price;c.querySelector("a").href=CONFIG.discord;
+  $("#prices").append(c);
+});
+
+/* avis */
+const rdlg=$("#rdlg"),err=$("#err");let rating=0,db=null,user=null,isOwner=false;
+const sin=$("#sin");
+for(let i=1;i<=5;i++){const b=document.createElement("button");b.type="button";b.textContent="★";b.setAttribute("role","radio");b.setAttribute("aria-label",i+" sur 5");b.setAttribute("aria-checked","false");
+  b.onclick=()=>{rating=i;[...sin.children].forEach((x,k)=>{x.classList.toggle("on",k<i);x.setAttribute("aria-checked",k===i-1)})};sin.append(b)}
+$("#rc").oninput=e=>$("#cc").textContent=e.target.value.length;
+$("#openReview").onclick=()=>{err.textContent="";rdlg.showModal()};
+$("#rcancel").onclick=()=>rdlg.close();
+function stars(n){return "★".repeat(n)+"<s>"+"★".repeat(5-n)+"</s>"}
+function render(docs){
+  const box=$("#reviews");box.innerHTML="";
+  if(!docs.length){box.innerHTML='<div class="empty-msg">Aucun avis pour le moment. Sois le premier à en laisser un.</div>';return}
+  docs.forEach(d=>{
+    const v=d.data(),r=document.createElement("article");r.className="rev";
+    r.innerHTML='<div class="stars" role="img"></div><p></p><footer><span><b></b></span><span></span></footer>';
+    const n=Math.min(5,Math.max(1,v.rating|0));
+    r.querySelector(".stars").innerHTML=stars(n);r.querySelector(".stars").setAttribute("aria-label",n+" sur 5");
+    r.querySelector("p").textContent=String(v.text||"");
+    r.querySelector("b").textContent=String(v.pseudo||"");
+    const dt=r.querySelector("footer span:last-child");dt.textContent=new Date(v.ts||0).toLocaleDateString("fr-FR");
+    if(isOwner){const x=document.createElement("button");x.className="del";x.textContent="Supprimer";x.onclick=()=>{if(confirm("Supprimer cet avis ?"))db.doc("reviews/"+d.id).delete().catch(()=>{})};dt.append(" · ",x)}
+    box.append(r);
+  });
+}
+(async()=>{
+  try{
+    db=await claude.use("db");user=await claude.use("user");isOwner=user?user.isOwner():false;
+    if(!db){$("#reviews").innerHTML='<div class="empty-msg">Les avis sont indisponibles pour le moment.</div>';$("#rnote").textContent="Connexion requise pour consulter et publier des avis.";return}
+    db.collection("reviews").orderBy("ts","desc").limit(60).onSnapshot(s=>render(s.docs),()=>{$("#reviews").innerHTML='<div class="empty-msg">Impossible de charger les avis.</div>'});
+  }catch(e){$("#reviews").innerHTML='<div class="empty-msg">Les avis sont indisponibles pour le moment.</div>'}
+})();
+$("#rform").addEventListener("submit",async e=>{
+  e.preventDefault();err.textContent="";
+  if($("#rh").value)return rdlg.close();
+  const pseudo=$("#rn").value.trim(),text=$("#rc").value.trim();
+  if(pseudo.length<2||pseudo.length>24)return err.textContent="Le pseudo doit contenir entre 2 et 24 caractères.";
+  if(!rating)return err.textContent="Choisis une note de 1 à 5 étoiles.";
+  if(text.length<10)return err.textContent="Le commentaire doit contenir au moins 10 caractères.";
+  if(text.length>400)return err.textContent="Le commentaire est limité à 400 caractères.";
+  if(/https?:\/\/|www\.|discord\.gg/i.test(text+pseudo))return err.textContent="Les liens ne sont pas autorisés dans un avis.";
+  let last=0;try{last=+localStorage.getItem("graph_last")||0}catch(_){}
+  if(Date.now()-last<60000)return err.textContent="Patiente une minute avant de publier un nouvel avis.";
+  if(!db)return err.textContent="Publication impossible : connexion requise.";
+  try{
+    await db.collection("reviews").add({pseudo,rating,text,ts:Date.now()});
+    try{localStorage.setItem("graph_last",Date.now())}catch(_){}
+    e.target.reset();rating=0;[...sin.children].forEach(x=>x.classList.remove("on"));$("#cc").textContent="0";rdlg.close();
+  }catch(x){err.textContent="Publication refusée. Vérifie ta connexion et réessaie."}
+});
+</script>
+</body>
+</html>
